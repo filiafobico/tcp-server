@@ -1,3 +1,3 @@
-module.exports = (data) => {
-
-}
+module.exports = () => ({
+  desc: 'success logout'
+})

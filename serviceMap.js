@@ -6,6 +6,6 @@ const logout = require('./services/logout')
 module.exports = {
   service,
   user,
-  login,
+  login: login(user),
   logout
 }
