@@ -3,6 +3,7 @@ const service = require('./index')
 module.exports = service
   ('service')
   ({
+    id: false,
     id_client: true,
     id_provider: false,
     type: true,

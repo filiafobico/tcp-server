@@ -17,11 +17,8 @@ const getPositionById = (list) => (id) => {
   if (!id) {
     throw new Error('id field is required')
   }
-  if (!+id) {
-    throw new Error('id field must be a number')
-  }
 
-  const position = list.findIndex((u) => u.id === +id)
+  const position = list.findIndex((u) => `${u.id}` === `${id}`)
 
   if (position < 0) {
     throw new Error('id not found')
@@ -40,7 +37,7 @@ module.exports = (entityName) => {
         throw new Error(errors)
       }
 
-      const id = entities.length + 1
+      const id = `${entities.length + 1}`
 
       entities.push({
         id,
@@ -76,7 +73,7 @@ module.exports = (entityName) => {
         ...where
           .reduce((acc, f) => (
             [[key, value]] = Object.entries(f),
-            { ...acc, [key]: value}
+            { ...acc, [key]: `${value}`}
           ), {})
       })
 

@@ -3,6 +3,7 @@ const service = require('./index')
 module.exports = service
   ('user')
   ({
+    id: false,
     name: true,
     cpf: true,
     email: true,
