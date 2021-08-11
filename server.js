@@ -6,9 +6,9 @@ const successResponse = require('./helpers/successResponse')
 
 const serviceMap = require('./serviceMap')
 
-const server = net.createServer((socket) => {
-  socket.pipe(socket);
+const PORT = +process.argv[2] || 0
 
+const server = net.createServer((socket) => {
   socket.on('data', (data) => {
     try {
       const message = processEntry(data)
@@ -19,23 +19,27 @@ const server = net.createServer((socket) => {
       }
 
       if (typeof service === 'function') {
-        return socket.write(JSON.stringify(successResponse(service(message?.data))))
+        const response = JSON.stringify(successResponse(service(message?.data)))
+        console.log('send response: ', response)
+        return socket.write(response)
       }
 
       throw new Error('unprocessable message')
     } catch (error) {
-      return socket.write(JSON.stringify(errorResponse(error.message)))
+      const response = JSON.stringify(errorResponse(error.message))
+      console.log('send error: ', response)
+      return socket.write(response)
     }
   })
 
   socket.on('connect', () => {
-    console.info('client connected')
+    console.log('client connected')
   })
   socket.on('end', () => {
-    console.info('client disconected')
+    console.log('client disconected')
   })
   socket.on('error', (error) => {
-    console.error('socket error:', error)
+    console.log('socket error:', error)
   })
 });
 
@@ -43,6 +47,6 @@ server.on('error', (error) => {
   console.error('erro:', error)
 })
 
-server.listen(process.env.PORT, () => {
-  console.log('server bound on port: ' + process.env.PORT)
+server.listen(PORT, () => {
+  console.log('server bound on port: ' + server.address().port)
 });
