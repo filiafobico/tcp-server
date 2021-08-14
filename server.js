@@ -1,12 +1,38 @@
 const net = require('net');
 
+const {
+  createWebSocketServer, parseAddress
+} = require('./ws-wrapper');
+
 const processEntry = require('./helpers/processEntry')
 const errorResponse = require('./helpers/errorResponse')
 const successResponse = require('./helpers/successResponse')
 
 const serviceMap = require('./serviceMap')
 
-const PORT = +process.argv[2] || 0
+const args = [...process.argv].slice(2);
+
+const PORT = +args[args.indexOf('--port') + 1] || 0;
+
+const _createWebSocketServer = (address, port) =>
+  createWebSocketServer(address, { port })
+    .then(({ port }) =>
+      console.log('websocket bound on port %d', port)
+    );
+
+if (args.includes('--ws-only')) {
+  const i = args.indexOf('--ws-only') + 1;
+
+  if (!args[i]) {
+    return console.error('Socket address to be bound not provided!');
+  }
+
+  return (async () => {
+    const address = await parseAddress(args[i]);
+
+    return _createWebSocketServer(address, PORT);
+  })().catch(e => console.error(e.message || e));
+}
 
 const server = net.createServer((socket) => {
   console.log('client connected');
@@ -47,5 +73,8 @@ server.on('error', (error) => {
 })
 
 server.listen(PORT, () => {
-  console.log('server bound on port: ' + server.address().port)
+  const address = server.address();
+  console.log('server bound on port %d', address.port)
+
+  _createWebSocketServer(address, address.port + 1);
 });
