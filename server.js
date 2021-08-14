@@ -9,6 +9,8 @@ const serviceMap = require('./serviceMap')
 const PORT = +process.argv[2] || 0
 
 const server = net.createServer((socket) => {
+  console.log('client connected');
+
   socket.on('data', (data) => {
     try {
       const message = processEntry(data)
@@ -32,9 +34,6 @@ const server = net.createServer((socket) => {
     }
   })
 
-  socket.on('connect', () => {
-    console.log('client connected')
-  })
   socket.on('end', () => {
     console.log('client disconected')
   })
