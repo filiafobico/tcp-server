@@ -5,11 +5,21 @@
   "main": "server.js",
   "scripts": {
     "server": "node server",
-    "client": "node client"
+    "client": "vite",
+    "client:build": "vue-tsc --noEmit && vite build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "vue": "^3.2.2",
     "ws": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.6.1",
+    "@vitejs/plugin-vue": "^1.4.0",
+    "@vue/compiler-sfc": "^3.2.2",
+    "typescript": "^4.3.5",
+    "vite": "^2.4.4",
+    "vue-tsc": "^0.2.3"
   }
 }
