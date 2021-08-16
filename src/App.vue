@@ -39,12 +39,16 @@ html {
   @apply w-screen h-screen p-4;
 }
 
-input {
+input,
+select {
   @apply w-full rounded border-2;
 }
 
-input:focus {
-  @apply outline-none border-green-300;
+input,
+select {
+  &:focus {
+    @apply outline-none border-green-300;
+  }
 }
 
 button {
