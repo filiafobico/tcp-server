@@ -4,6 +4,7 @@ import Menu from '@/views/Menu.vue';
 import Action from '@/views/Action.vue';
 
 import Register from '@/views/action/Register.vue';
+import Login from '@/views/action/Login.vue';
 
 const routes: RouteRecordRaw[] = [
     {
@@ -20,6 +21,11 @@ const routes: RouteRecordRaw[] = [
                 path: '/register',
                 component: Register
             },
+            {
+                name: 'Login',
+                path: '/login',
+                component: Login
+            }
         ]
     },
 ];
