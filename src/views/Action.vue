@@ -1,7 +1,13 @@
 <template>
-    <div class="flex flex-col h-full space-y-2">
-        <router-view class="h-full"></router-view>
-        <button @click="back">Voltar</button>
+    <div class="relative">
+        <div role="button" class="absolute select-none right-0">
+            <span @click="back" class="material-icons">close</span>
+        </div>
+        <div class="w-full text-2xl text-center" v-text="$route.name"></div>
+    </div>
+
+    <div class="h-full">
+        <router-view></router-view>
     </div>
 </template>
 

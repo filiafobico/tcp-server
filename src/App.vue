@@ -6,7 +6,9 @@
     </div>
 
     <div class="p-2 w-1/2">
-      <router-view></router-view>
+      <div class="flex flex-col space-y-2 h-full">
+        <router-view></router-view>
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +31,10 @@ export default defineComponent({
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+html {
+  @apply overflow-hidden;
+}
+
 #app {
   @apply w-screen h-screen p-4;
 }
@@ -42,7 +48,8 @@ input:focus {
 }
 
 button {
-  @apply w-full rounded border-2 h-10;
+  line-height: 0;
+  @apply rounded border-2 h-8 flex justify-center items-center;
 }
 
 button:hover {
