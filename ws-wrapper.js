@@ -1,5 +1,5 @@
 const net = require('net');
-const WebSocket = require('ws');
+const _WebSocket = require('ws');
 
 /**
  * WebSocket instance options
@@ -30,7 +30,7 @@ const parseAddress = (address) =>
  * Creates a WebSocket server wrapper
  * @param {Partial<net.AddressInfo>} address Socket address to connect
  * @param {WebSocketOptions} [options] WebSocket server options
- * @returns {Promise<WebSocket.AddressInfo>} WebSocket server address
+ * @returns {Promise<_WebSocket.AddressInfo>} WebSocket server address
  */
 const createWebSocketServer = (address, options = { port: 0 }) =>
   new Promise((resolve, reject) => {
@@ -48,7 +48,7 @@ const createWebSocketServer = (address, options = { port: 0 }) =>
       return reject('Socket port not provided!');
     }
 
-    const ws = new WebSocket.Server({ port: options.port });
+    const ws = new _WebSocket.Server({ port: options.port });
 
     ws.on('connection', (ws) => {
       const client = new net.Socket();
