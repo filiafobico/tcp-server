@@ -75,6 +75,4 @@ server.on('error', (error) => {
 server.listen(PORT, () => {
   const address = server.address();
   console.log('server bound on port %d', address.port)
-
-  _createWebSocketServer(address, address.port + 1);
 });
