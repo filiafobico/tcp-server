@@ -1,0 +1,31 @@
+<template>
+    <div class="flex flex-col space-y-2">
+        <div class="text-2xl text-center">Menu</div>
+        <button @click="register">Cadastrar usuário</button>
+        <button @click="login">Fazer login</button>
+        <button @click="update">Atualizar dados</button>
+        <button @click="logout">Logout</button>
+    </div>
+</template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+    name: 'Menu',
+    methods: {
+        register() {
+
+        },
+        login() {
+
+        },
+        update() {
+
+        },
+        logout() {
+
+        }
+    }
+});
+</script>
