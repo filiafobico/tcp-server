@@ -19,7 +19,7 @@ export default defineComponent({
             this.$router.push({ name: 'Login' });
         },
         update() {
-
+            this.$router.push({ name: 'Atualizar Dados' });
         },
         logout() {
             this.$socket.send({ id: 'logout' });
