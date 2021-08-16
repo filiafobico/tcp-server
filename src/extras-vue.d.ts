@@ -9,3 +9,9 @@ declare module '@vue/runtime-core' {
     }
 
 }
+
+declare global {
+
+    const __WEBSOCKET__: string;
+
+}
