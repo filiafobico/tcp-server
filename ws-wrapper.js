@@ -9,7 +9,7 @@ const WebSocket = require('ws');
 /**
  * Try to parse a socket address
  * @param {string} address Socket address
- * @returns {Promise<net.AddressInfo>} Parsed address object
+ * @returns {Promise<Partial<net.AddressInfo>>} Parsed address object
  */
 const parseAddress = (address) =>
   new Promise((resolve, reject) => {
@@ -28,7 +28,7 @@ const parseAddress = (address) =>
 
 /**
  * Creates a WebSocket server wrapper
- * @param {net.AddressInfo} address Socket address to connect
+ * @param {Partial<net.AddressInfo>} address Socket address to connect
  * @param {WebSocketOptions} [options] WebSocket server options
  * @returns {Promise<WebSocket.AddressInfo>} WebSocket server address
  */
