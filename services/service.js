@@ -4,8 +4,6 @@ module.exports = service
   ('service')
   ({
     id: false,
-    id_client: true,
-    id_provider: false,
     type: true,
     description: false,
     value: false,
@@ -18,8 +16,6 @@ module.exports = service
     status: true
   })
   ((data) => ({
-    id_client: data.id_client,
-    id_provider: data.id_provider,
     type: data.type,
     description: data.description,
     value: data.value,
