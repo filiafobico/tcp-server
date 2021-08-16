@@ -1,5 +1,5 @@
 <template>
-    <div class="console overflow-y-auto">
+    <div class="console overflow-y-auto" ref="console">
         <div v-for="message in messages" v-text="message"></div>
     </div>
 </template>
@@ -17,6 +17,11 @@ export default defineComponent({
     created() {
         this.$socket.on('data', message => {
             this.messages.push(message);
+
+            this.$nextTick(() => {
+                const element = this.$refs['console'] as HTMLElement;
+                element.scrollTop = element.scrollHeight;
+            });
         });
     }
 });
