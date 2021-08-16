@@ -18,10 +18,20 @@ export class SocketClient {
         );
     }
 
-    public send(data: object) {
+    public async send(data: object): Promise<string> {
         const message = JSON.stringify(data);
         this.emit('data', 'S: ' + message);
-        this.socket.send(message);
+
+        return new Promise((resolve) => {
+            const callback = (event: MessageEvent<Blob>) => {
+                resolve(event.data.text());
+
+                this.socket.removeEventListener('message', callback);
+            };
+
+            this.socket.addEventListener('message', callback);
+            this.socket.send(message);
+        });
     }
 
 }
