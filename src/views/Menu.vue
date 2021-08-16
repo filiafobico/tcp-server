@@ -3,6 +3,7 @@
     <button @click="register">Cadastrar usuário</button>
     <button @click="login">Fazer login</button>
     <button @click="update">Atualizar dados</button>
+    <button @click="listService">Listar Serviços</button>
     <button @click="createService">Criar Serviço</button>
     <button @click="logout">Logout</button>
 </template>
@@ -21,6 +22,9 @@ export default defineComponent({
         },
         update() {
             this.$router.push({ name: 'Atualizar Dados' });
+        },
+        listService() {
+            this.$router.push({ name: 'Lista de Serviços' });
         },
         createService() {
             this.$router.push({ name: 'Criar Serviço' });

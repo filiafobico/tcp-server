@@ -52,7 +52,7 @@ export default defineComponent({
                     type: this.type,
                     description: this.description,
                     value: this.value,
-                    id_user_client: this.$socket.user,
+                    id_user_client: String(this.$socket.user),
                     user_client_place: this.user_client_place,
                     date: this.date,
                     hour: this.hour,

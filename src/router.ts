@@ -7,6 +7,7 @@ import Register from '@/views/action/Register.vue';
 import Login from '@/views/action/Login.vue';
 import Update from '@/views/action/Update.vue';
 import Service from '@/views/action/Service.vue';
+import ListService from '@/views/action/ListService.vue';
 
 const routes: RouteRecordRaw[] = [
     {
@@ -32,6 +33,11 @@ const routes: RouteRecordRaw[] = [
                 name: 'Atualizar Dados',
                 path: '/update',
                 component: Update
+            },
+            {
+                name: 'Lista de Serviços',
+                path: '/services',
+                component: ListService
             },
             {
                 name: 'Criar Serviço',
