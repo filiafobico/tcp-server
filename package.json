@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "server": "node server",
-    "client": "vite",
+    "dev": "vite",
+    "client": "vite preview",
     "client:build": "vue-tsc --noEmit && vite build"
   },
   "author": "",
