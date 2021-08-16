@@ -2,6 +2,7 @@
     <div class="console overflow-y-auto" ref="console">
         <div v-for="message in messages" v-text="message"></div>
     </div>
+    <button @click="clear">Limpar</button>
 </template>
 
 <script lang="ts">
@@ -23,6 +24,11 @@ export default defineComponent({
                 element.scrollTop = element.scrollHeight;
             });
         });
+    },
+    methods: {
+        clear() {
+            this.messages = [];
+        }
     }
 });
 </script>
