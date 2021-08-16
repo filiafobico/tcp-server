@@ -6,6 +6,8 @@ type SocketEvents = {
 
 export class SocketClient {
 
+    private _id: number = -1;
+
     private readonly socket: WebSocket;
 
     public constructor(address: string) {
@@ -32,6 +34,14 @@ export class SocketClient {
             this.socket.addEventListener('message', callback);
             this.socket.send(message);
         });
+    }
+
+    public set user(value: number) {
+        this._id = value;
+    }
+
+    public get user(): number {
+        return this._id;
     }
 
 }

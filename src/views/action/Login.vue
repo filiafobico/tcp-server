@@ -9,7 +9,7 @@
             <input type="password" v-model="password" />
         </div>
         <div class="w-full p-2">
-            <button class="w-full" @click="login">Entrar</button>
+            <button class="w-full" @click="doLogin">Entrar</button>
         </div>
     </div>
 </template>
@@ -25,13 +25,22 @@ export default defineComponent({
     }),
     methods: {
         login() {
-            this.$socket.send({
+            return this.$socket.send({
                 id: 'login',
                 data: {
                     email: this.email,
                     password: this.password
                 }
-            });
+            }).then(JSON.parse);
+        },
+        doLogin() {
+            this.login()
+                .then(({ data }) => {
+                    this.$socket.user = data.id;
+                })
+                .catch(() =>
+                    alert('Falha ao realizar login, verificar console')
+                );
         }
     }
 });
