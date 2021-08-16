@@ -13,7 +13,7 @@ export default defineComponent({
     name: 'Menu',
     methods: {
         register() {
-
+            this.$router.push({ name: 'Cadastro' });
         },
         login() {
 
