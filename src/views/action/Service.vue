@@ -4,17 +4,21 @@
             <span>Tipo</span>
             <input type="text" v-model="type" />
         </div>
-        <div class="w-3/4 p-2">
+        <div class="w-2/4 p-2">
             <span>Descrição</span>
             <input type="text" v-model="description" />
         </div>
-        <div class="w-1/2 p-2">
+        <div class="w-1/4 p-2">
             <span>Preço</span>
             <input type="text" v-model="value" v-maska="'#*.#*'" />
         </div>
         <div class="w-1/2 p-2">
-            <span>Local do Serviço</span>
+            <span>Local da Solicitação</span>
             <input type="text" v-model="user_client_place" />
+        </div>
+        <div class="w-1/2 p-2">
+            <span>Local da Execução</span>
+            <input type="text" v-model="service_place" />
         </div>
         <div class="w-1/2 p-2">
             <span>Dia Desejado</span>
@@ -49,6 +53,7 @@ export default defineComponent({
         description: '',
         value: '',
         user_client_place: '',
+        service_place: '',
         date: '',
         hour: '',
     }),
@@ -73,6 +78,7 @@ export default defineComponent({
                     value: this.value,
                     id_user_client: String(this.$socket.user),
                     user_client_place: this.user_client_place,
+                    service_place: this.service_place,
                     date,
                     hour,
                     status: 'aberto'
