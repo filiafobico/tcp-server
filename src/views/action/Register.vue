@@ -1,12 +1,12 @@
 <template>
     <div class="flex flex-wrap">
-        <div class="w-2/3 p-2">
+        <div class="w-full lg:w-2/3 p-2">
             <span>Nome</span>
             <input type="text" v-model="name" />
         </div>
-        <div class="w-1/3 p-2">
+        <div class="w-full lg:w-1/3 p-2">
             <span>CPF</span>
-            <input type="text" v-model="cpf" />
+            <input type="text" v-model="cpf" v-maska="'###.###.###-##'" />
         </div>
         <div class="w-1/2 p-2">
             <span>E-mail</span>
@@ -16,11 +16,11 @@
             <span>Senha</span>
             <input type="password" v-model="password" />
         </div>
-        <div class="w-3/4 p-2">
+        <div class="w-1/2 xl:w-3/4 p-2">
             <span>Endereço (Opcional)</span>
             <input type="text" v-model="address" />
         </div>
-        <div class="w-1/4 p-2">
+        <div class="w-1/2 xl:w-1/4 p-2">
             <span>Telefone (Opcional)</span>
             <input type="text" v-model="phone" />
         </div>

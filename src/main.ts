@@ -1,5 +1,8 @@
 import { createApp } from 'vue';
 
+import Maska from 'maska';
+import { Field, Form, ErrorMessage } from 'vee-validate';
+
 import '@fontsource/material-icons';
 
 import router from './router';
@@ -11,4 +14,8 @@ const app = createApp(App);
 
 app.config.globalProperties['$socket'] = new SocketClient(__WEBSOCKET__);
 
-app.use(router).mount('#app');
+app.component('v-field', Field);
+app.component('v-form', Form);
+app.component('v-message', ErrorMessage);
+
+app.use(router).use(Maska).mount('#app');

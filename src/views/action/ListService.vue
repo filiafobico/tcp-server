@@ -3,7 +3,10 @@
         <template v-if="services.length">
             <span>Serviço</span>
             <select v-model="service">
-                <option v-for="service in services" :value="service" v-text="service.description"></option>
+                <option v-for="service in services" :value="service">
+                    <span v-text="['[', service.status, ']'].join('').toUpperCase()"></span>
+                    {{ service.date }} - {{ service.type }}: {{ service.description }}
+                </option>
             </select>
         </template>
         <div v-else class="text-center">Não há serviços cadastrados.</div>

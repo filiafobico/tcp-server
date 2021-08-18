@@ -24,14 +24,22 @@ export default defineComponent({
             this.$router.push({ name: 'Atualizar Dados' });
         },
         listService() {
+            if (this.$socket.user === -1) {
+                return alert('Faça login primeiro para escolher/listar serviços!');
+            }
+
             this.$router.push({ name: 'Lista de Serviços' });
         },
         createService() {
+            if (this.$socket.user === -1) {
+                return alert('Faça login primeiro para criar um serviço!');
+            }
+
             this.$router.push({ name: 'Criar Serviço' });
         },
         logout() {
             this.$socket.send({ id: 'logout' })
-                .then(() => {
+                .finally(() => {
                     this.$socket.user = -1;
                 });
         }

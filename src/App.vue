@@ -1,12 +1,12 @@
 <template>
-  <div class="w-full h-full flex">
-    <div class="p-2 w-1/2 flex flex-col space-y-2">
+  <div class="w-full h-full flex flex-col-reverse md:flex-row">
+    <div class="p-2 w-full h-1/2 md:w-1/2 md:h-full flex flex-col space-y-2">
       <div class="text-2xl text-center">Console</div>
       <Console></Console>
     </div>
 
-    <div class="p-2 w-1/2">
-      <div class="flex flex-col space-y-2 h-full">
+    <div class="p-2 w-full h-1/2 md:w-1/2 md:h-full">
+      <div class="flex flex-col space-y-2">
         <router-view></router-view>
       </div>
     </div>
@@ -62,5 +62,9 @@ button:hover {
 
 button:focus {
   @apply outline-none;
+}
+
+span[role="alert"] {
+  @apply text-xs text-red-500;
 }
 </style>
