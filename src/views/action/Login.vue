@@ -1,10 +1,10 @@
 <template>
     <div class="flex flex-wrap">
-        <div class="w-1/2 p-2">
+        <div class="w-full lg:w-1/2 p-2">
             <span>E-mail</span>
             <input type="text" v-model="email" />
         </div>
-        <div class="w-1/2 p-2">
+        <div class="w-full lg:w-1/2 p-2">
             <span>Senha</span>
             <input type="password" v-model="password" />
         </div>

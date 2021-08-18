@@ -13,11 +13,11 @@
     </div>
 
     <div class="flex flex-wrap" v-if="user">
-        <div class="w-2/3 p-2">
+        <div class="w-full lg:w-2/3 p-2">
             <span>Nome</span>
             <input type="text" v-model="user.name" />
         </div>
-        <div class="w-1/3 p-2">
+        <div class="w-full lg:w-1/3 p-2">
             <span>CPF</span>
             <input type="text" v-model="user.cpf" />
         </div>
@@ -29,11 +29,11 @@
             <span>Senha</span>
             <input type="password" v-model="user.password" />
         </div>
-        <div class="w-3/4 p-2">
+        <div class="w-1/2 xl:w-3/4 p-2">
             <span>Endereço</span>
             <input type="text" v-model="user.address" />
         </div>
-        <div class="w-1/4 p-2">
+        <div class="w-1/2 xl:w-1/4 p-2">
             <span>Telefone</span>
             <input type="text" v-model="user.phone" />
         </div>
