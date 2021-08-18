@@ -19,7 +19,7 @@
         </div>
         <div class="w-full lg:w-1/3 p-2">
             <span>CPF</span>
-            <input type="text" v-model="user.cpf" />
+            <input type="text" v-model="user.cpf" v-maska="'###.###.###-##'" />
         </div>
         <div class="w-1/2 p-2">
             <span>E-mail</span>
