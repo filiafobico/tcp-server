@@ -63,4 +63,8 @@ button:hover {
 button:focus {
   @apply outline-none;
 }
+
+span[role="alert"] {
+  @apply text-xs text-red-500;
+}
 </style>
