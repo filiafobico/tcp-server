@@ -16,18 +16,24 @@ export default defineComponent({
         return { messages };
     },
     created() {
+        this.$socket.on('sent', message => {
+            this.add('S: ' + message);
+        });
         this.$socket.on('data', message => {
+            this.add('R: ' + message);
+        });
+    },
+    methods: {
+        clear() {
+            this.messages = [];
+        },
+        add(message: string) {
             this.messages.push(message);
 
             this.$nextTick(() => {
                 const element = this.$refs['console'] as HTMLElement;
                 element.scrollTop = element.scrollHeight;
             });
-        });
-    },
-    methods: {
-        clear() {
-            this.messages = [];
         }
     }
 });

@@ -1,6 +1,7 @@
 import mitt, { Emitter } from 'mitt';
 
 type SocketEvents = {
+    sent: string;
     data: string;
 };
 
@@ -16,13 +17,13 @@ export class SocketClient {
         this.socket = new WebSocket(`ws://${address}`);
 
         this.socket.addEventListener('message', (event: MessageEvent<Blob>) =>
-            event.data.text().then(data => this.emit('data', 'R: ' + data))
+            event.data.text().then(data => this.emit('data', data))
         );
     }
 
     public async send(data: object): Promise<string> {
         const message = JSON.stringify(data);
-        this.emit('data', 'S: ' + message);
+        this.emit('sent', message);
 
         return new Promise((resolve) => {
             const callback = (event: MessageEvent<Blob>) => {
