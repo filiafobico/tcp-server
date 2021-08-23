@@ -41,7 +41,15 @@ export default defineComponent({
         getServices() {
             return this.$socket.send({
                 id: 'service',
-                type: 'list'
+                type: 'list',
+                data: {
+                    id: '',
+                    type: '',
+                    description: '',
+                    id_user_provider: '',
+                    id_user_client: '',
+                    status: ''
+                }
             }).then(JSON.parse);
         },
         select() {

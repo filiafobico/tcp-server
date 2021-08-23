@@ -21,10 +21,6 @@ export class SocketClient {
     }
 
     public async send(data: object): Promise<string> {
-        if (!('data' in data)) {
-            Object.assign(data, { data: {} });
-        }
-
         const message = JSON.stringify(data);
         this.emit('data', 'S: ' + message);
 
