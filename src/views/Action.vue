@@ -6,9 +6,7 @@
         <div class="w-full text-2xl text-center" v-text="$route.name"></div>
     </div>
 
-    <div class="h-full">
-        <router-view></router-view>
-    </div>
+    <router-view></router-view>
 </template>
 
 <script lang="ts">

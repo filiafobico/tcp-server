@@ -5,10 +5,8 @@
       <Console></Console>
     </div>
 
-    <div class="p-2 w-full h-1/2 md:w-1/2 md:h-full">
-      <div class="flex flex-col space-y-2">
-        <router-view></router-view>
-      </div>
+    <div class="p-2 w-full h-1/2 md:w-1/2 md:h-full flex flex-col space-y-2">
+      <router-view></router-view>
     </div>
   </div>
 </template>
