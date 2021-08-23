@@ -8,6 +8,7 @@ import Login from '@/views/action/Login.vue';
 import Update from '@/views/action/Update.vue';
 import Service from '@/views/action/Service.vue';
 import ListService from '@/views/action/ListService.vue';
+import Chat from '@/views/action/Chat.vue';
 
 const routes: RouteRecordRaw[] = [
     {
@@ -43,6 +44,11 @@ const routes: RouteRecordRaw[] = [
                 name: 'Criar Serviço',
                 path: '/service',
                 component: Service
+            },
+            {
+                name: 'Chat',
+                path: '/chat',
+                component: Chat
             }
         ]
     },

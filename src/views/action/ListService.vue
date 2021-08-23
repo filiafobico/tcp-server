@@ -12,8 +12,12 @@
         <div v-else class="text-center">Não há serviços cadastrados.</div>
     </div>
 
-    <div class="w-full p-2" v-if="service">
+    <div class="w-full p-2" v-if="service && canSelect">
         <button class="w-full" @click="select">Selecionar serviço</button>
+    </div>
+
+    <div class="w-full p-2" v-if="service && canFinalize">
+        <button class="w-full" @click="finalize">Finalizar serviço</button>
     </div>
 </template>
 
@@ -37,21 +41,52 @@ export default defineComponent({
                 alert('Erro ao obter lista de serviços. Verificar retorno no console (R)')
             );
     },
+    computed: {
+        canSelect(): boolean {
+            return this.service.status === 'aberto';
+        },
+        canFinalize(): boolean {
+            return this.service.id_user_provider === this.$socket.user && this.service.status === 'andamento';
+        }
+    },
     methods: {
         getServices() {
             return this.$socket.send({
                 id: 'service',
-                type: 'list'
+                type: 'list',
+                data: {
+                    id: '',
+                    type: '',
+                    description: '',
+                    id_user_provider: '',
+                    id_user_client: '',
+                    status: ''
+                }
             }).then(JSON.parse);
         },
-        select() {
+        finalize() {
+            this.service.status = 'fechado';
+
             this.$socket.send({
                 id: 'service',
                 type: 'update',
                 data: {
                     id: this.service.id,
-                    id_user_provider: String(this.$socket.user),
-                    status: 'andamento'
+                    status: this.service.status
+                }
+            });
+        },
+        select() {
+            this.service.id_user_provider = String(this.$socket.user);
+            this.service.status = 'andamento';
+
+            this.$socket.send({
+                id: 'service',
+                type: 'update',
+                data: {
+                    id: this.service.id,
+                    id_user_provider: this.service.id_user_provider,
+                    status: this.service.status
                 }
             });
         }

@@ -67,7 +67,16 @@ export default defineComponent({
         getUsers() {
             return this.$socket.send({
                 id: 'user',
-                type: 'list'
+                type: 'list',
+                data: {
+                    id: '',
+                    name: '',
+                    cpf: '',
+                    email: '',
+                    password: '',
+                    address: '',
+                    phone: ''
+                }
             }).then(JSON.parse);
         },
         update() {
