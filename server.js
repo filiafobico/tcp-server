@@ -35,7 +35,9 @@ if (args.includes('--ws-only')) {
 }
 
 const connectedSockets = new Set();
-connectedSockets.broadcast = function(message) {
+connectedSockets.broadcast = function (message) {
+  console.log('broadcasted message: ', message);
+
   for (let socket of this) {
     socket.write(JSON.stringify(message));
   }
@@ -49,7 +51,7 @@ const server = net.createServer((socket) => {
     try {
       const message = processEntry(data)
 
-      if (message?.id === 'chat')  {
+      if (message?.id === 'chat') {
         return connectedSockets.broadcast({
           id: 'chat',
           data: {
