@@ -2,8 +2,8 @@
     <div class="text-2xl text-center">Menu</div>
     <button @click="register">Cadastrar usuário</button>
     <button @click="login">Fazer login</button>
-    <button @click="update">Atualizar dados</button>
-    <button @click="listService">Listar Serviços</button>
+    <button @click="update">Atualizar Usuários</button>
+    <button @click="listService">Listar/Selecionar Serviços</button>
     <button @click="createService">Criar Serviço</button>
     <button @click="logout">Logout</button>
 </template>
