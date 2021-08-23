@@ -34,12 +34,31 @@ if (args.includes('--ws-only')) {
   })().catch(e => console.error(e.message || e));
 }
 
+const connectedSockets = new Set();
+connectedSockets.broadcast = function(message) {
+  for (let socket of this) {
+    socket.write(JSON.stringify(message));
+  }
+}
+
 const server = net.createServer((socket) => {
   console.log('client connected');
+  connectedSockets.add(socket);
 
   socket.on('data', (data) => {
     try {
       const message = processEntry(data)
+
+      if (message?.id === 'chat')  {
+        return connectedSockets.broadcast({
+          id: 'chat',
+          data: {
+            ip: socket.address().address,
+            message: message?.data?.message
+          }
+        });
+      }
+
       let service = serviceMap[message?.id]
 
       if (typeof service === 'object') {
@@ -62,6 +81,7 @@ const server = net.createServer((socket) => {
 
   socket.on('end', () => {
     console.log('client disconected')
+    connectedSockets.delete(socket);
   })
   socket.on('error', (error) => {
     console.log('socket error:', error)
