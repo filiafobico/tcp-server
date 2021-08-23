@@ -22,12 +22,12 @@ export default defineComponent({
     mounted() {
         this.$socket.on('data', message => {
             try {
-                const object = JSON.parse(message);
+                const { data } = JSON.parse(message);
 
-                const user = object?.data?.ip;
-                const content = object?.data?.message;
-
-                this.messages.push({ user, content });
+                if (data?.ip && data?.message) {
+                    const { ip: user, message: content } = data;
+                    this.messages.push({ user, content });
+                }
             } catch {
                 alert('Erro ao processar resposta do servidor. Verifique o Console');
             }
