@@ -46,7 +46,7 @@ export default defineComponent({
             return this.service.status === 'aberto';
         },
         canFinalize(): boolean {
-            return this.service.id_user_provider === this.$socket.user && this.service.status === 'andamento';
+            return this.service.id_user_client === this.$socket.user && this.service.status === 'andamento';
         }
     },
     methods: {
